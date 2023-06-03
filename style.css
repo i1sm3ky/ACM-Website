@@ -1,7 +1,7 @@
 body {
     background-color: black;
     font-family: 'Montserrat';
-    padding-top: 2500px
+    padding-top: 2500px;
 }
 
 .Bg-Blob1 {
@@ -37,13 +37,14 @@ body {
 }
 
 .Blog-Cards {
-    display: flex;
+    display: grid;
+    overflow: hidden;
     max-width: 1300px;
-    background-color: rgba(255, 255, 255, 0.011);
+    background-color: rgba(255, 255, 255, 0.03);
     padding: 20px;
     margin: 10px;
     border-radius: 45px;
-    transition: all 0.5s;
+    transition: outline-offset 0.5s, grid 1s;
 }
 
 .Blog-Cards:hover {
@@ -67,8 +68,6 @@ body {
     flex-direction: column;
     justify-content: center;
     color: white;
-    position: absolute;
-    opacity: 0;
 }
 
 .Blog-Titles {
@@ -85,23 +84,31 @@ body {
     color: #88d1ff;
 }
 
-.Show-Blog-Text {
-    position: inherit;
-    opacity: 1;
+.Blog-Card-Odd {
+    grid-template-columns: 1fr 0fr;
 }
 
-@media only screen and (max-width: 800px) {
-    .Blog-Cards {
-        flex-direction: column;
-    }
+.Blog-Card-Even {
+    grid-template-columns: 0fr 1fr;
 }
 
-@media only screen and (min-width: 800px) {
-    .Blog-Cards:nth-child(even) {
-        flex-direction: row-reverse;
-    }
+.Show-Blog-Text-Even {
+    grid-template-columns: 10fr 1fr;
+}
 
-    .Blog-Preview-Text:nth-child(even) {
-        padding-left: 20px;
-    }
+.Show-Blog-Text-Odd {
+    grid-template-columns: 1fr 10fr;
+}
+
+.Blog-Preview-Text-Even {
+    order: -1;
+}
+
+.Show-Blog-Text-Mobile {
+    display: flex;
+    flex-direction: column;
+}
+
+.Blog-Preview-Text-Mobile {
+    order: 1;
 }
